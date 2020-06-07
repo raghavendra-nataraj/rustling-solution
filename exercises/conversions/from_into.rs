@@ -39,6 +39,10 @@ impl From<&str> for Person {
             return Person::default();
         }
         let v : Vec<&str> = s.split(',').collect();
+        
+        if v.len() == 1 || v[1].len() == 0 || v[0].len() == 0 {
+            return Person::default();
+        } 
         let ag = v[1].parse::<usize>();
         match ag {
             Ok(age) => Person { name: v[0].to_string(), age: age},
